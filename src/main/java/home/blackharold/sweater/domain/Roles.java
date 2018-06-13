@@ -1,5 +1,13 @@
 package home.blackharold.sweater.domain;
 
-public enum Roles {
+import org.springframework.security.core.GrantedAuthority;
+
+public enum Roles implements GrantedAuthority {
     USER;
+    
+    
+    @Override
+    public String getAuthority() {
+        return name();
+    }
 }

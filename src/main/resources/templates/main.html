@@ -34,7 +34,7 @@
 <div>
     <p>Список сообщений:</p>
     <ul>
-        <li th:each="u:${messages}" th:text="${u.text + ' ' + u.tag}">messages text</li>
+        <li th:each="message:${messages}" th:text="${message.text + ' ' + message.tag + ' ' + message.authorName}">messages text</li>
     </ul>
 </div>
 </body>
