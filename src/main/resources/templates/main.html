@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th=xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <p>
+    <h1 th:inline="text">Привет, [[${#httpServletRequest.remoteUser}]] !</h1>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Выйти"/>
+    </form>
+    </p>
+</div>
+<div>
+    <form th:method="post" th:action="main">
+        <input type="hidden" name="_csrf" value="${_csrf.token}">
+        <input type="text" name="text" placeholder="Вводим сообщение">
+        <input type="text" name="tag" placeholder="tag">
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+
+<div>
+    <p>Фильтр:</p>
+    <form th:method="post" th:action="filter">
+        <input type="text" name="filter">
+        <button type="submit">Поиск</button>
+    </form>
+</div>
+
+<div>
+    <p>Список сообщений:</p>
+    <ul>
+        <li th:each="u:${messages}" th:text="${u.text + ' ' + u.tag}">messages text</li>
+    </ul>
+</div>
+</body>
+</html>
