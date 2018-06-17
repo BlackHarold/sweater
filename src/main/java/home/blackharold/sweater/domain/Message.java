@@ -16,7 +16,7 @@ public class Message {
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-    private User user;
+    private User author;
     
     public Message() {
     }
@@ -24,19 +24,19 @@ public class Message {
     public Message(String text, String tag, User user) {
         this.text = text;
         this.tag = tag;
-        this.user = user;
+        this.author = user;
     }
     
     public String getAuthorName(){
-        return user != null ? user.getUsername() : "<none>";
+        return author != null ? author.getUsername() : "<none>";
     }
     
     public User getAuthor() {
-        return user;
+        return author;
     }
     
-    public void setAuthor(User user) {
-        this.user = user;
+    public void setAuthor(User author) {
+        this.author = author;
     }
     
     public Integer getId() {
